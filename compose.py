@@ -49,9 +49,9 @@ def compose(g, words, length=50):
     return composition
 
 # Steps:
-def main(artist):
-    # get words from text
-    words = get_words_from_text('texts/hp_sorcerer_stone.txt')
+def main(artist, num_words):
+    # get words from text (for non songs)
+    # words = get_words_from_text('texts/hp_sorcerer_stone.txt')
 
     # for song lyrics
     words = []
@@ -65,10 +65,11 @@ def main(artist):
     g = make_graph(words)
 
     # get next word for x number of words
-    composition = compose(g, words, 100)
+    composition = compose(g, words, num_words)
 
     # show the user
     return ' '.join(composition)
 
 if __name__ == '__main__':
-    print(main())
+    num_words = int(input('How many words? '))
+    print(main('porter robinson', num_words))
